@@ -1,0 +1,14 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "Passing the request body straight through as the response body, unread"
+language = "other"
+manifest_version = 3
+name = "body-passthrough"
+service_id = ""
+
+[local_server]
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/body_passthrough.wasm bin/main.wasm"
