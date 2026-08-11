@@ -1,0 +1,16 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "Streaming a request body to a backend as it arrives, using send-async-streaming"
+language = "other"
+manifest_version = 3
+name = "streaming-a-request"
+service_id = ""
+
+[local_server]
+  [local_server.backends.http_me]
+    url = "https://http-me.fastly.dev"
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/streaming_a_request.wasm bin/main.wasm"
