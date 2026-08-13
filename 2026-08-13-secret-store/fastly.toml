@@ -1,0 +1,17 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "Reading from a Secret Store"
+language = "other"
+manifest_version = 3
+name = "secret-store"
+service_id = ""
+
+[local_server.secret_stores]
+  [[local_server.secret_stores.creds]]
+    key = "api-token"
+    data = "s3cr3t-token-value"
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/secret_store.wasm bin/main.wasm"
