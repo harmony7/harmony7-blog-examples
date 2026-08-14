@@ -1,0 +1,15 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "KV Store metadata and generation, and optimistic concurrency with if-generation-match"
+language = "other"
+manifest_version = 3
+name = "kv-store-metadata-and-generation"
+service_id = ""
+
+[local_server.kv_stores]
+  flags = []
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/kv_store_metadata_and_generation.wasm bin/main.wasm"

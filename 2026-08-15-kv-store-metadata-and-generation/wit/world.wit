@@ -1,0 +1,6 @@
+package local:main;
+
+world fastly-compute-guest {
+  import fastly:compute/kv-store@0.1.0;
+  export fastly:compute/http-incoming@0.1.0;
+}
