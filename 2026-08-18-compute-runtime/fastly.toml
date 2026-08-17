@@ -1,0 +1,12 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "Reading compute-runtime"
+language = "other"
+manifest_version = 3
+name = "compute-runtime"
+service_id = ""
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/compute_runtime.wasm bin/main.wasm"
