@@ -1,0 +1,16 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "Looking up geographic data for an IP address"
+language = "other"
+manifest_version = 3
+name = "geo"
+service_id = ""
+
+[local_server.geolocation]
+  file = "geo.json"
+  format = "json"
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/geo.wasm bin/main.wasm"

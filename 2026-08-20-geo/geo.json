@@ -1,0 +1,21 @@
+{
+  "8.8.8.8": {
+    "area_code": 0,
+    "city": "Mountain View",
+    "conn_speed": "broadband",
+    "conn_type": "wired",
+    "continent_code": "NA",
+    "country_code": "US",
+    "country_code3": "USA",
+    "country_name": "United States",
+    "gmt_offset": -700,
+    "latitude": 37.4056,
+    "longitude": -122.0775,
+    "metro_code": 0,
+    "postal_code": "94043",
+    "proxy_description": "?",
+    "proxy_type": "?",
+    "region": "CA",
+    "utc_offset": -700
+  }
+}
