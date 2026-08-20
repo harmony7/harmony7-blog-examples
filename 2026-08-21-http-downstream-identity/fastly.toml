@@ -1,0 +1,12 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "Reading downstream request identity from http-downstream"
+language = "other"
+manifest_version = 3
+name = "http-downstream-identity"
+service_id = ""
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/http_downstream_identity.wasm bin/main.wasm"
