@@ -23,7 +23,7 @@ fn write_options(max_age_ns: u64) -> cache::WriteOptions<'static> {
 }
 
 fn lookup_options() -> cache::LookupOptions<'static> {
-    cache::LookupOptions { request_headers: None, always_use_requested_range: false, extra: None }
+    cache::LookupOptions { request_headers: None, always_use_requested_range: true, extra: None }
 }
 // </fold>
 
