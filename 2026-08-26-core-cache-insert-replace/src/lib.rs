@@ -23,7 +23,7 @@ fn write_options(max_age_ns: u64) -> cache::WriteOptions<'static> {
 }
 
 fn lookup_options() -> cache::LookupOptions<'static> {
-    cache::LookupOptions { request_headers: None, always_use_requested_range: false, extra: None }
+    cache::LookupOptions { request_headers: None, always_use_requested_range: true, extra: None }
 }
 // </fold>
 
@@ -71,7 +71,7 @@ impl http_incoming::Guest for CoreCacheInsertReplace {
         let replace_options = cache::ReplaceOptions {
             request_headers: None,
             replace_strategy: Some(cache::ReplaceStrategy::Immediate),
-            always_use_requested_range: false,
+            always_use_requested_range: true,
             extra: None,
         };
         match cache::ReplaceEntry::replace(&key, &replace_options) {
