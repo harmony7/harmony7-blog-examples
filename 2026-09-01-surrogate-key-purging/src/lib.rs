@@ -28,7 +28,7 @@ fn lookup_options() -> cache::LookupOptions<'static> {
 }
 
 fn state_of(key: &[u8]) -> String {
-    match cache::Entry::lookup(&key.to_vec(), &lookup_options()) {
+    match cache::Entry::lookup(key, &lookup_options()) {
         Ok(entry) => {
             let s = format!("{:?}", entry.get_state());
             let _ = cache::close_entry(entry);
@@ -45,7 +45,7 @@ fn state_of(key: &[u8]) -> String {
 /// produces the same surrogate key at insert time and at purge time.
 fn surrogate_key_for(cache_key: &[u8]) -> String {
     let digest = Sha256::digest(cache_key);
-    digest.iter().map(|b| format!("{b:02x}")).collect()
+    digest.iter().map(|b| format!("{b:02X}")).collect()
 }
 // </highlight>
 
@@ -62,7 +62,7 @@ impl http_incoming::Guest for SurrogateKeyPurging {
             (&b"product-42-fr"[..], "catalog product-42"),
             (&b"unrelated"[..], "other"),
         ] {
-            let writing = cache::insert(&key.to_vec(), &write_options(60_000_000_000, Some(keys.to_string())))
+            let writing = cache::insert(key, &write_options(60_000_000_000, Some(keys.to_string())))
                 .map_err(|_| ())?;
             http_body::write(&writing, key).map_err(|_| ())?;
             http_body::close(writing).map_err(|_| ())?;
