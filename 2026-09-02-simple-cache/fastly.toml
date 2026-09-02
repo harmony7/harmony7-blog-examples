@@ -1,0 +1,12 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "Simple Cache: get and get_or_set, built by hand"
+language = "other"
+manifest_version = 3
+name = "simple-cache"
+service_id = ""
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/simple_cache.wasm bin/main.wasm"
