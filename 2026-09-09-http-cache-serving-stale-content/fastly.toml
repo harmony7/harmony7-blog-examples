@@ -1,0 +1,28 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "HTTP Cache: serving stale when revalidation fails"
+language = "other"
+manifest_version = 3
+name = "http-cache-serving-stale-content"
+service_id = ""
+
+[local_server]
+
+  [local_server.backends]
+
+    [local_server.backends.http_me]
+      url = "https://http-me.fastly.dev"
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/http_cache_serving_stale_content.wasm bin/main.wasm"
+
+[setup]
+
+  [setup.backends]
+
+    [setup.backends.http_me]
+      address = "http-me.fastly.dev"
+      description = "http-me test origin"
+      port = 443
