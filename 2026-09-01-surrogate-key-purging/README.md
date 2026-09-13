@@ -1,6 +1,6 @@
 # Purging by surrogate key
 
-Stores several objects tagged `product-42`, `product-42-en`, `product-42-fr` and `catalog`, purges one key, and looks all of them up again to show exactly which objects a single purge reaches. Also derives a surrogate key the way Fastly's SDKs do, to check the derivation is interoperable.
+Stores several objects tagged `product-42`, `product-42-en`, `product-42-fr`, and `catalog`, purges one key, and looks all of them up again to show exactly which objects a single purge reaches. Also derives a surrogate key the way Fastly's SDKs do, to check the derivation is interoperable.
 
 Full article: [Purging by Surrogate Key](https://behindthepanic.dev/posts/2026-09-01-surrogate-key-purging/)
 
