@@ -1,6 +1,6 @@
 # HTTP Cache: before the send
 
-Calls the four `http-cache` functions that run before you fetch anything — `is-request-cacheable`, `get-suggested-cache-key`, `transaction-lookup` and `get-suggested-backend-request` — and prints what each returns. The lookup runs twice, once with `backend: none` and once with a real backend handle, to settle what that option actually changes.
+Calls the four `http-cache` functions that run before you fetch anything — `is-request-cacheable`, `get-suggested-cache-key`, `transaction-lookup`, and `get-suggested-backend-request` — and prints what each returns. The lookup runs twice, once with `backend: none` and once with a real backend handle, to settle what that option actually changes.
 
 Full article: [HTTP Cache: Before the Send](https://behindthepanic.dev/posts/2026-09-07-http-cache-before-the-send/)
 
