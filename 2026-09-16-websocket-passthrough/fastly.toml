@@ -1,0 +1,33 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "WebSocket passthrough: handing a WebSocket request to a backend"
+language = "other"
+manifest_version = 3
+name = "websocket-passthrough"
+service_id = ""
+
+[local_server]
+
+  [local_server.backends]
+
+    [local_server.backends.echo]
+      url = "https://echo.websocket.org"
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/websocket_passthrough.wasm bin/main.wasm"
+
+[setup]
+
+  [setup.backends]
+
+    [setup.backends.echo]
+      address = "echo.websocket.org"
+      description = "A public WebSocket echo server"
+      port = 443
+
+  [setup.products]
+
+    [setup.products.websockets]
+      enable = true
