@@ -1,0 +1,40 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "Fanout: handing a request to the GRIP proxy, and an origin that answers in GRIP"
+language = "other"
+manifest_version = 3
+name = "fanout"
+service_id = ""
+
+[local_server]
+
+  [local_server.backends]
+
+    # origin.mjs, the stand-in GRIP origin in this directory.
+    [local_server.backends.origin]
+      url = "http://127.0.0.1:3000"
+
+  # Runs Pushpin alongside Viceroy. Pushpin must be installed, and on the PATH
+  # unless pushpin_path says where.
+  [local_server.pushpin]
+    enable = true
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/fanout.wasm bin/main.wasm"
+
+[setup]
+
+  [setup.backends]
+
+    # Replace with an origin of your own that answers in GRIP.
+    [setup.backends.origin]
+      address = "example.com"
+      description = "An origin that answers in GRIP"
+      port = 443
+
+  [setup.products]
+
+    [setup.products.fanout]
+      enable = true
