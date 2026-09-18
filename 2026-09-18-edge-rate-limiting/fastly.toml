@@ -1,0 +1,12 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "Edge rate limiting: a rate counter and a penalty box keyed by client IP"
+language = "other"
+manifest_version = 3
+name = "edge-rate-limiting"
+service_id = ""
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/edge_rate_limiting.wasm bin/main.wasm"
