@@ -2,7 +2,7 @@
 
 Sends a request for `http-me.fastly.dev`'s sample JPEG (`/image-jpeg`) through `send-to-image-optimizer`, asking for it at 200 pixels wide in WebP, in the `us_east` region. If Image Optimizer refuses, it rebuilds the request, since the failed call consumed it, and serves the original image instead. The `x-image-optimizer` response header says which happened.
 
-Full article: [Image Optimizer: The Request You Don't Get Back](https://behindthepanic.dev/posts/2026-09-25-image-optimizer/)
+Full article: [Image Optimizer: Hand Over the Request, Get Back an Image](https://behindthepanic.dev/posts/2026-09-25-image-optimizer/)
 
 ## Prerequisites
 
