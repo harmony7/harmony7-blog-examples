@@ -1,0 +1,19 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "ACLs: looking up an IP address in an access control list"
+language = "other"
+manifest_version = 3
+name = "acls"
+service_id = ""
+
+[local_server]
+
+  # The name here is the one the program passes to acl.open. On a real service,
+  # that's the name of the resource link.
+  [local_server.acls]
+    blocklist = { file = "./acl-entries.json" }
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/acls.wasm bin/main.wasm"
