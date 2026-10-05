@@ -1,0 +1,21 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "Writing to the front of a body, and trailers: headers that arrive after the body"
+language = "other"
+manifest_version = 3
+name = "write-front-and-trailers"
+service_id = ""
+
+[local_server]
+  [local_server.backends.http_me]
+    url = "https://http-me.fastly.dev"
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/write_front_and_trailers.wasm bin/main.wasm"
+
+[setup]
+  [setup.backends.http_me]
+    address = "http-me.fastly.dev"
+    port = 443
