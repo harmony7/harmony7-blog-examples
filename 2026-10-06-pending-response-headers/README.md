@@ -2,7 +2,7 @@
 
 Starts a backend request with `send-async`, queues header changes on the `pending-response` for a real response, for the synthetic 5XX Compute makes up if the request fails, and for both, then hands it off with `send-downstream-pending` and returns without waiting. `/ok` removes an `x-internal` header the backend sets, `/fail` sends to a name that can't resolve, and `/slow` waits two seconds on the backend while the program finishes immediately.
 
-Full article: [Pending Responses: Editing Headers You'll Never Hold](https://behindthepanic.dev/posts/2026-10-06-pending-response-headers/)
+Full article: [Request Handoff: Optimizing Long-Running Backend Requests](https://behindthepanic.dev/posts/2026-10-06-pending-response-headers/)
 
 ## Prerequisites
 
