@@ -1,0 +1,24 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "Backend options: tuning a dynamic backend and reading any backend's settings back"
+language = "other"
+manifest_version = 3
+name = "backend-options"
+service_id = ""
+
+[local_server]
+  [local_server.backends.http_me]
+    url = "https://http-me.fastly.dev"
+    override_host = "http-me.fastly.dev"
+    first_byte_timeout_ms = 20000
+    between_bytes_timeout_ms = 12000
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/backend_options.wasm bin/main.wasm"
+
+[setup]
+  [setup.backends.http_me]
+    address = "http-me.fastly.dev"
+    port = 443
