@@ -1,0 +1,13 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "Health checks on dynamic backends: which documented rules are enforced, and what is-healthy reports"
+language = "other"
+manifest_version = 3
+name = "health-checks"
+service_id = ""
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/health_checks.wasm bin/main.wasm"
+
