@@ -1,0 +1,22 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "Waiting on wasi:io's pollable and on async-io's, and why they don't mix"
+language = "other"
+manifest_version = 3
+name = "two-pollables"
+service_id = ""
+
+[local_server]
+  [local_server.backends.http_me]
+    url = "https://http-me.fastly.dev"
+    override_host = "http-me.fastly.dev"
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && cp target/wasm32-wasip2/debug/two_pollables.wasm bin/main.wasm"
+
+[setup]
+  [setup.backends.http_me]
+    address = "http-me.fastly.dev"
+    port = 443

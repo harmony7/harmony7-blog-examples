@@ -1,0 +1,14 @@
+[package]
+name = "two-pollables"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wit-bindgen = "0.57.1"
+
+[features]
+# Tries to hand a wasi:io pollable to async-io's select. Doesn't compile.
+mix = []
