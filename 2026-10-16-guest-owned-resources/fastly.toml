@@ -1,0 +1,12 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "A Compute service that uses a resource owned by another component, composed with wac"
+language = "other"
+manifest_version = 3
+name = "guest-owned-resources"
+service_id = ""
+
+[scripts]
+  build = "cargo build --target wasm32-wasip2 && mkdir -p bin && wac plug target/wasm32-wasip2/debug/service.wasm --plug target/wasm32-wasip2/debug/tally.wasm -o bin/main.wasm"

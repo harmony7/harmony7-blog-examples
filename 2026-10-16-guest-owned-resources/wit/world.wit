@@ -1,0 +1,23 @@
+package local:main;
+
+/// A running total, owned by whichever component implements this interface.
+interface tally {
+  resource tally {
+    constructor(name: string);
+    /// Adds `n` and returns the new total.
+    add: func(n: u32) -> u32;
+  }
+}
+
+/// The component that implements `tally`.
+world tally-provider {
+  export tally;
+}
+
+/// A Compute service that uses `tally` without implementing it.
+world service {
+  import tally;
+  import fastly:compute/http-body@0.1.0;
+  import fastly:compute/http-resp@0.1.0;
+  export fastly:compute/http-incoming@0.1.0;
+}
