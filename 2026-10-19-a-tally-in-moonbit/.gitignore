@@ -1,0 +1,6 @@
+/bin
+/build
+/pkg
+/target
+/tally/_build
+/tally/*.wasm

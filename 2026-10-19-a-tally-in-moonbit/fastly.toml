@@ -1,0 +1,12 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "A Rust Compute service composed with a tally component written in MoonBit"
+language = "other"
+manifest_version = 3
+name = "a-tally-in-moonbit"
+service_id = ""
+
+[scripts]
+  build = "cargo build -p service && cd tally && moon build --target wasm && cd .. && wasm-tools component embed wit --world tally-provider --encoding utf8 tally/_build/wasm/debug/build/gen/gen.wasm -o tally/tally.embed.wasm && wasm-tools component new tally/tally.embed.wasm -o tally/tally.wasm && mkdir -p bin && wac plug target/wasm32-wasip2/debug/service.wasm --plug tally/tally.wasm -o bin/main.wasm"

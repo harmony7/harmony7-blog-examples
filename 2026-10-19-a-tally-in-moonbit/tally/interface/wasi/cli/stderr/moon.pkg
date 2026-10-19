@@ -1,0 +1,5 @@
+warnings = "-44"
+
+import {
+  "local/main/interface/wasi/io/streams",
+}

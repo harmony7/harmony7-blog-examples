@@ -1,0 +1,20 @@
+warnings = "-44"
+
+import {
+  "local/main/gen/interface/local/main/tally",
+}
+
+options(
+  link: {
+    "wasm": {
+      "export-memory-name": "memory",
+      "heap-start-address": 16,
+      "exports": [
+        "mbt_ffi_cabi_realloc:cabi_realloc",
+        "wasmExportConstructorTally:local:main/tally#[constructor]tally",
+        "wasmExportMethodTallyAdd:local:main/tally#[method]tally.add",
+        "wasmExportTallyDtor:local:main/tally#[dtor]tally",
+      ],
+    },
+  },
+)

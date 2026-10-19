@@ -1,0 +1,1 @@
+The component that implements `tally`, plus the one WASI interface its log lines need.

@@ -1,0 +1,1 @@
+A running total, owned by whichever component implements this interface.
