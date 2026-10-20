@@ -1,0 +1,14 @@
+package local:main;
+
+/// A Compute service.
+world service {
+  import fastly:compute/http-body@0.1.0;
+  import fastly:compute/http-resp@0.1.0;
+  export fastly:compute/http-incoming@0.1.0;
+}
+
+/// A component that supplies `wasi:filesystem` with no files in it.
+world no-files {
+  export wasi:filesystem/types@0.2.6;
+  export wasi:filesystem/preopens@0.2.6;
+}

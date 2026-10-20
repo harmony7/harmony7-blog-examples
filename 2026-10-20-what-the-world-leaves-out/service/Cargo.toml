@@ -1,0 +1,16 @@
+[package]
+name = "service"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wit-bindgen = "0.57.1"
+
+[features]
+# Each feature adds a standard-library call that imports a WASI
+# interface the Compute `service` world doesn't include.
+fs = []
+net = []

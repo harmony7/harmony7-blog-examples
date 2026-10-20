@@ -1,0 +1,12 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "A service whose standard library imports wasi:filesystem, composed with a component that supplies it"
+language = "other"
+manifest_version = 3
+name = "what-the-world-leaves-out"
+service_id = ""
+
+[scripts]
+  build = "cargo build -p service --features fs && cargo build -p no-files --target wasm32-unknown-unknown && mkdir -p bin && wasm-tools component new target/wasm32-unknown-unknown/debug/no_files.wasm -o target/no_files.wasm && wac plug target/wasm32-wasip2/debug/service.wasm --plug target/no_files.wasm -o bin/main.wasm"
