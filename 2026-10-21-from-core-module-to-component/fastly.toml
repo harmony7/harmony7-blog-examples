@@ -1,0 +1,12 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "A Compute service built in two visible stages: a core module, then a component made from it"
+language = "other"
+manifest_version = 3
+name = "from-core-module-to-component"
+service_id = ""
+
+[scripts]
+  build = "cargo build && mkdir -p bin && cp target/wasm32-wasip2/debug/from_core_module_to_component.wasm bin/main.wasm"
