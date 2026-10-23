@@ -1,0 +1,12 @@
+{
+  "name": "tally",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "jco componentize tally.js --wit ../wit --world-name tally-provider --disable all --enable stdio -o tally.wasm"
+  },
+  "devDependencies": {
+    "@bytecodealliance/componentize-js": "0.23.0",
+    "@bytecodealliance/jco": "1.35.0"
+  }
+}

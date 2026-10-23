@@ -1,0 +1,6 @@
+/bin
+/build
+/pkg
+/target
+/tally/node_modules
+/tally/*.wasm

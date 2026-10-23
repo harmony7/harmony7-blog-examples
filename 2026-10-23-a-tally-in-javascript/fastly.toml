@@ -1,0 +1,12 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = [""]
+description = "A Rust Compute service composed with a tally component written in JavaScript, which needs a no-files component of its own"
+language = "other"
+manifest_version = 3
+name = "a-tally-in-javascript"
+service_id = ""
+
+[scripts]
+  build = "cargo build -p service && cargo build -p no-files --target wasm32-unknown-unknown && wasm-tools component new target/wasm32-unknown-unknown/debug/no_files.wasm -o target/no_files.wasm && cd tally && npm run --silent build && cd .. && wac plug tally/tally.wasm --plug target/no_files.wasm -o target/tally-plugged.wasm && mkdir -p bin && wac plug target/wasm32-wasip2/debug/service.wasm --plug target/tally-plugged.wasm -o bin/main.wasm"
